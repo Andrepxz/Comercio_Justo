@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explora artesanías y conoce a las personas y comunidades que las crean.">
+  <title>Artesanías | DEL CAMPO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <header class="encabezado">
+    <a href="index.html" class="logo">🌿 DEL CAMPO</a>
+    <nav aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html" aria-current="page">Artesanías</a>
+      <a href="productores.html">Productores</a>
+      <a href="unete.html">Únete</a>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+    <section id="productos">
+      <div class="titulo-seccion">
+        <span class="etiqueta-verde">HISTORIAS HECHAS A MANO</span>
+        <h1>Una pieza, muchas historias</h1>
+        <p>
+          Pasea por el catálogo, conoce a sus creadores y descubre
+          el lugar y los saberes que acompañan cada creación.
+        </p>
+      </div>
+
+      <div class="filtros">
+        <input
+          type="search"
+          id="busqueda"
+          aria-label="Buscar artesanía, artesano o comunidad"
+          placeholder="Busca por pieza, artesano o comunidad..."
+        >
+        <select id="filtroCategoria" aria-label="Filtrar por categoría">
+          <option value="">Todas las categorías</option>
+          <option>Textiles</option>
+          <option>Cerámica</option>
+          <option>Tejidos</option>
+          <option>Joyería</option>
+          <option>Madera</option>
+          <option>Otros</option>
+        </select>
+      </div>
+      <div id="listaProductos" class="rejilla" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <div id="modalQR" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="tituloModalQR">
+    <div class="modal-contenido">
+      <button id="cerrarModal" class="cerrar" type="button" aria-label="Cerrar">×</button>
+      <div id="detalleProducto">
+        <h2 id="tituloModalQR">Historia de la artesanía</h2>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="codigo.js"></script>
+</body>
+</html>

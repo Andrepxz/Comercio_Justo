@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explora las comunidades donde nacen las artesanías de DEL CAMPO.">
+  <title>Productores y comunidades | DEL CAMPO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <header class="encabezado">
+    <a href="index.html" class="logo">🌿 DEL CAMPO</a>
+    <nav aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html">Artesanías</a>
+      <a href="productores.html" aria-current="page">Productores</a>
+      <a href="unete.html">Únete</a>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+    <section id="mapaSeccion" class="seccion">
+      <div class="titulo-seccion">
+        <span class="etiqueta-verde">CONOCE SUS COMUNIDADES</span>
+        <h1>Un mapa de saberes y comunidades</h1>
+        <p>Explora los lugares donde nacen nuestras artesanías y conoce a quienes las crean.</p>
+      </div>
+      <div id="map" role="application" aria-label="Mapa de comunidades productoras"></div>
+    </section>
+  </main>
+
+  <footer>
+    <h2>🌿 DEL CAMPO</h2>
+    <p>Valoramos tus manos, tu historia y tus tradiciones.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="codigo.js"></script>
+</body>
+</html>

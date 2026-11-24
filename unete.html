@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Únete a DEL CAMPO y comparte tu trabajo artesanal con una comunidad que lo valora.">
+  <title>Únete a la comunidad | DEL CAMPO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <header class="encabezado">
+    <a href="index.html" class="logo">🌿 DEL CAMPO</a>
+    <nav aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html">Artesanías</a>
+      <a href="productores.html">Productores</a>
+      <a href="unete.html" aria-current="page">Únete</a>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+    <section id="registro" class="seccion formulario-seccion">
+      <div class="titulo-seccion">
+        <span class="etiqueta-verde">SEAMOS PARTE DEL CAMBIO</span>
+        <h1>¡Queremos conocerte!</h1>
+        <p>Si elaboras artesanías o deseas apoyar a nuestros productores, este espacio también es para ti.</p>
+      </div>
+
+      <div id="auth-container" class="seccion" style="margin-bottom: 30px;">
+        <h2>Qué bueno tenerte de vuelta</h2>
+        <div class="formulario dos-columnas">
+          <label>Correo electrónico
+            <input type="email" id="emailLogin" autocomplete="email" placeholder="Tu correo electrónico">
+          </label>
+          <label>Contraseña
+            <input type="password" id="passLogin" autocomplete="current-password" placeholder="Tu contraseña">
+          </label>
+        </div>
+        <div class="acciones" style="margin-top: 15px;">
+          <button id="btnCorreo" type="button" class="boton">Entrar con correo</button>
+          <button id="btnGoogle" type="button" class="boton boton-dorado">Continuar con Google</button>
+        </div>
+        <p id="authStatus" class="mensaje" aria-live="polite"></p>
+      </div>
+
+      <form id="formUsuario" class="formulario">
+        <label>¿Cómo deseas participar?
+          <select id="tipoUsuario">
+            <option value="Productor">Soy productor artesanal</option>
+            <option value="Comprador">Soy comprador</option>
+          </select>
+        </label>
+        <label>¿Cómo te llamas?
+          <input id="nombreUsuario" required maxlength="100" autocomplete="name" placeholder="Tu nombre y apellido">
+        </label>
+        <label>¿A qué número te enviamos buenas noticias?
+          <input id="telefonoUsuario" type="tel" required autocomplete="tel" placeholder="Incluye el código de tu país">
+        </label>
+        <label>¿Desde qué comunidad nos escribes?
+          <input id="localidadUsuario" required maxlength="120" autocomplete="address-level2" placeholder="Tu comunidad, pueblo o ciudad">
+        </label>
+        <button type="submit" class="boton">Ser parte de la comunidad</button>
+      </form>
+      <p id="mensajeUsuario" class="mensaje" aria-live="polite"></p>
+
+      <hr>
+
+      <div class="titulo-seccion">
+        <span class="etiqueta-verde">TU TRABAJO MERECE SER CONOCIDO</span>
+        <h2>Cuéntanos qué nace de tus manos</h2>
+        <p>Comparte quién creó tu pieza, de qué comunidad viene y qué historia quieres contar.</p>
+      </div>
+
+      <form id="formProducto" class="formulario dos-columnas">
+        <label>¿Cómo se llama tu creación?
+          <input id="nombreProducto" required maxlength="100" placeholder="El nombre de tu pieza">
+        </label>
+        <label>Categoría
+          <select id="categoriaProducto">
+            <option>Textiles</option>
+            <option>Cerámica</option>
+            <option>Tejidos</option>
+            <option>Joyería</option>
+            <option>Madera</option>
+            <option>Otros</option>
+          </select>
+        </label>
+        <label>¿Quién la creó?
+          <input id="nombreProductor" required maxlength="100" autocomplete="name" placeholder="Tu nombre o el de quien la elaboró">
+        </label>
+        <label>¿A qué número pueden saludarte?
+          <input id="telefonoProductor" type="tel" required autocomplete="tel" placeholder="WhatsApp con código de país">
+        </label>
+        <label>¿En qué comunidad nació?
+          <input id="ubicacionProducto" required maxlength="120" placeholder="Comunidad, pueblo o ciudad">
+        </label>
+        <div class="ancho-completo ubicacion-selector">
+          <p class="etiqueta-ubicacion">Selecciona tu comunidad en el mapa</p>
+          <p class="ayuda">Haz clic en el punto exacto o arrastra el marcador. También puedes compartir tu ubicación actual.</p>
+          <div id="mapaSeleccionProducto" role="application" aria-label="Selector de ubicación del productor" tabindex="0"></div>
+          <div class="acciones-ubicacion">
+            <button id="btnUbicacionActual" type="button" class="boton boton-secundario">Usar mi ubicación actual</button>
+            <a id="abrirGoogleMaps" class="boton boton-secundario" href="https://www.google.com/maps/" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1">Ver punto en Google Maps</a>
+          </div>
+          <p id="estadoUbicacion" class="mensaje" aria-live="polite">Aún no has seleccionado una ubicación.</p>
+          <input id="latitudProducto" type="hidden">
+          <input id="longitudProducto" type="hidden">
+        </div>
+        <label>Un precio de referencia
+          <input id="precioProducto" maxlength="40" placeholder="Opcional · Ejemplo: S/ 85">
+        </label>
+        <label class="ancho-completo">¿Qué materiales elegiste?
+          <input id="materialesProducto" maxlength="180" placeholder="Por ejemplo, lana de alpaca y tintes naturales">
+        </label>
+        <label class="ancho-completo">¿Qué historia te gustaría compartir?
+          <textarea id="descripcionProducto" rows="4" maxlength="600" placeholder="Cuéntanos cómo la elaboras, qué significa para ti o qué saber de tu comunidad vive en esta pieza..."></textarea>
+        </label>
+        <button type="submit" class="boton ancho-completo">Compartir mi historia y crear su QR</button>
+      </form>
+      <p class="ayuda">
+        Prepararemos una ficha digital y un código QR para que la historia
+        de tu creación pueda viajar y encontrar nuevos hogares.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <h2>🌿 DEL CAMPO</h2>
+    <p>Valoramos tus manos, tu historia y tus tradiciones.</p>
+  </footer>
+
+  <div id="modalQR" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="tituloModalQR">
+    <div class="modal-contenido">
+      <button id="cerrarModal" class="cerrar" type="button" aria-label="Cerrar">×</button>
+      <div id="detalleProducto">
+        <h2 id="tituloModalQR">Historia de la artesanía</h2>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="codigo.js"></script>
+</body>
+</html>
